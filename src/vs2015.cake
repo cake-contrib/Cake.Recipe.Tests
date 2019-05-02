@@ -10,6 +10,7 @@ BuildParameters.SetParameters(context: Context,
                               repositoryOwner: "AdmiringWorm",
                               repositoryName: "Cake.Recipe.Tests",
                               appVeyorAccountName: "AdmiringWorm",
+                              shouldRunDupFinder: false,
                               shouldRunGitVersion: true);
 
 BuildParameters.PrintParameters(Context);
