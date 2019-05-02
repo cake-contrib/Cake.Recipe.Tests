@@ -33,8 +33,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUnitTests", "vs2015\MSUni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTests", "vs2015\NUnitTests\NUnitTests.csproj", "{4ED59B8C-D2AF-4315-B8B9-C189C608CCF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitV2Tests", "vs2015\NUnitV2Tests\NUnitV2Tests.csproj", "{4049B0AB-D3C7-41CD-883F-AB19F901A2CC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTests", "vs2015\XUnitTests\XUnitTests.csproj", "{58C39CA9-1B0A-4B4C-A819-F18A260B7E84}"
 EndProject
 Global
@@ -42,7 +40,6 @@ Global
 		vs2015\SharedProject\SharedProject.projitems*{10d2fefe-856f-4057-95f6-ab746571ba01}*SharedItemsImports = 4
 		vs2015\SharedProject\SharedProject.projitems*{168939e7-665f-4888-895d-9fc7633bbd3d}*SharedItemsImports = 4
 		vs2015\SharedProject\SharedProject.projitems*{1791b52a-64e8-426c-8d73-167afcf42f17}*SharedItemsImports = 4
-		vs2015\SharedProject\SharedProject.projitems*{4049b0ab-d3c7-41cd-883f-ab19f901a2cc}*SharedItemsImports = 4
 		vs2015\SharedProject\SharedProject.projitems*{48be6753-3b65-4ca4-8d9c-b6a21ac9d1b1}*SharedItemsImports = 13
 		vs2015\SharedProject\SharedProject.projitems*{4ed59b8c-d2af-4315-b8b9-c189c608ccf5}*SharedItemsImports = 4
 		vs2015\SharedProject\SharedProject.projitems*{58c39ca9-1b0a-4b4c-a819-f18a260b7e84}*SharedItemsImports = 4
@@ -112,10 +109,6 @@ Global
 		{4ED59B8C-D2AF-4315-B8B9-C189C608CCF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ED59B8C-D2AF-4315-B8B9-C189C608CCF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ED59B8C-D2AF-4315-B8B9-C189C608CCF5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4049B0AB-D3C7-41CD-883F-AB19F901A2CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4049B0AB-D3C7-41CD-883F-AB19F901A2CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4049B0AB-D3C7-41CD-883F-AB19F901A2CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4049B0AB-D3C7-41CD-883F-AB19F901A2CC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{58C39CA9-1B0A-4B4C-A819-F18A260B7E84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{58C39CA9-1B0A-4B4C-A819-F18A260B7E84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58C39CA9-1B0A-4B4C-A819-F18A260B7E84}.Release|Any CPU.ActiveCfg = Release|Any CPU
