@@ -15,6 +15,7 @@ BuildParameters.SetParameters(context: Context,
 
 BuildParameters.PrintParameters(Context);
 
-ToolSettings.SetToolSettings(context: Context);
+ToolSettings.SetToolSettings(context: Context,
+                             testCoverageFilter: "+[*]*");
 
 Build.Run();
