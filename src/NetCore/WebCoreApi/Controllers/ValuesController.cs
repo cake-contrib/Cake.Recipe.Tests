@@ -1,4 +1,8 @@
-﻿namespace WebCoreApi.Controllers
+﻿using System.Collections.Generic;
+using MathLibrary;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebCoreApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

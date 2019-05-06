@@ -1,4 +1,7 @@
-﻿namespace WebEmpty
+﻿using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+
+namespace WebEmpty
 {
     public class Program
     {

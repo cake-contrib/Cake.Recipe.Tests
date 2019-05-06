@@ -1,4 +1,7 @@
-﻿namespace WebCoreApi
+﻿using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+
+namespace WebCoreApi
 {
     public class Program
     {
