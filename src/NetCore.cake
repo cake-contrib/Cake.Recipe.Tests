@@ -11,7 +11,8 @@ BuildParameters.SetParameters(context: Context,
                               repositoryName: "Cake.Recipe.Tests",
                               appVeyorAccountName: "AdmiringWorm",
                               shouldRunDupFinder: false,
-                              shouldRunGitVersion: true);
+                              shouldRunGitVersion: true,
+                              shouldRunInspectCode: !ReSharperTools.EndsWith("2018.3.4")); // This version is unable to parse our .NET Core project
 
 BuildParameters.PrintParameters(Context);
 
