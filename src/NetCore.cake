@@ -1,12 +1,12 @@
-#load nuget:?package=Cake.Recipe&Error=vs2015
+#load nuget:?package=Cake.Recipe&version=1.0.0
 
 Environment.SetVariableNames();
 
 BuildParameters.SetParameters(context: Context,
                               buildSystem: BuildSystem,
-                              sourceDirectoryPath: "./vs2015",
-                              solutionFilePath: IsRunningOnWindows() ? "./vs2015.sln" : "./vs2015_unix.sln",
-                              title: "VS2015 Tests",
+                              sourceDirectoryPath: "./NetCore",
+                              solutionFilePath: "./NetCore.sln",
+                              title: ".NET Core Tests",
                               repositoryOwner: "AdmiringWorm",
                               repositoryName: "Cake.Recipe.Tests",
                               appVeyorAccountName: "AdmiringWorm",
@@ -18,4 +18,4 @@ BuildParameters.PrintParameters(Context);
 ToolSettings.SetToolSettings(context: Context,
                              testCoverageFilter: "+[*]*");
 
-Build.Run();
+Build.RunDotNetCore();

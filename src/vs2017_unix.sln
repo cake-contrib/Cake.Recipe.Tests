@@ -3,11 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppProject", "vs2017\WpfAppProject\WpfAppProject.csproj", "{450B5370-9692-4A92-87B0-5D23411171D8}"
-	ProjectSection(ProjectDependencies) = postProject
-		{F743D716-02A1-487F-8975-7D98C0B244B0} = {F743D716-02A1-487F-8975-7D98C0B244B0}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsAppProject", "vs2017\WindowsFormsAppProject\WindowsFormsAppProject.csproj", "{14660EC1-B7AA-44A5-942B-68B9D4F172CD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F743D716-02A1-487F-8975-7D98C0B244B0} = {F743D716-02A1-487F-8975-7D98C0B244B0}
@@ -41,10 +36,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{450B5370-9692-4A92-87B0-5D23411171D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{450B5370-9692-4A92-87B0-5D23411171D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{450B5370-9692-4A92-87B0-5D23411171D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{450B5370-9692-4A92-87B0-5D23411171D8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14660EC1-B7AA-44A5-942B-68B9D4F172CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14660EC1-B7AA-44A5-942B-68B9D4F172CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14660EC1-B7AA-44A5-942B-68B9D4F172CD}.Release|Any CPU.ActiveCfg = Release|Any CPU

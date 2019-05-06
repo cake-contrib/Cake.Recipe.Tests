@@ -25,5 +25,8 @@ foreach (var script in buildScripts) {
 
 Task("Default");
 
-var target = Argument<string>("target", null) ?? EnvironmentVariable("TEST_TARGET") ?? "Default";
+var target = Argument("target", EnvironmentVariable("TEST_TARGET") ?? "Default");
+
+Information($"Running target: {target}");
+
 RunTarget(target);

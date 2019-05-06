@@ -378,7 +378,15 @@
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(VSToolsPath)' == ''">
+    <VSToolsPathBase>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio</VSToolsPathBase>
+    <VSToolsPath Condition="EXISTS('$(VsToolsPathBase)\v$(VisualStudioVersion)')">$(VsToolsPathBase)\v$(VisualStudioVersion)</VSToolsPath>
+    <VSToolsPath Condition="EXISTS('$(VsToolsPathBase)\v15.0')">$(VsToolsPathBase)\v15.0</VSToolsPath>
+    <VSToolsPath Condition="EXISTS('$(VsToolsPathBase)\v14.0')">$(VsToolsPathBase)\v14.0</VSToolsPath>
+    <VSToolsPath Condition="EXISTS('$(VsToolsPathBase)\v12.0')">$(VsToolsPathBase)\v12.0</VSToolsPath>
+    <VSToolsPath Condition="EXISTS('$(VsToolsPathBase)\v11.0')">$(VsToolsPathBase)\v11.0</VSToolsPath>
+    <VSToolsPath Condition="EXISTS('$(VsToolsPathBase)\v10.0')">$(VsToolsPathBase)\v10.0</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
