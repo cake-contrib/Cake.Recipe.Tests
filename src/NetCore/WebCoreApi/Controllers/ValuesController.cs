@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MathLibrary;
-using Microsoft.AspNetCore.Mvc;
-
-namespace WebCoreApi.Controllers
+﻿namespace WebCoreApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

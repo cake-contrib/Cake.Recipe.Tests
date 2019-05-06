@@ -42,6 +42,7 @@ namespace WebApplication2.Models
 }
 
 #region Helpers
+
 namespace WebApplication2
 {
     public static class IdentityHelper
@@ -97,4 +98,5 @@ namespace WebApplication2
         }
     }
 }
-#endregion
+
+#endregion Helpers

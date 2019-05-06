@@ -5,7 +5,6 @@ using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartup(typeof(WebApplication4.Startup))]
-
 namespace WebApplication4
 {
     public partial class Startup

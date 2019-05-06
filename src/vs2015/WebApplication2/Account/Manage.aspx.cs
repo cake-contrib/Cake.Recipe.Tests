@@ -80,7 +80,6 @@ namespace WebApplication2.Account
             }
         }
 
-
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
@@ -116,7 +115,7 @@ namespace WebApplication2.Account
             Response.Redirect("/Account/Manage");
         }
 
-        //EnableTwoFactorAuthentication 
+        //EnableTwoFactorAuthentication
         protected void TwoFactorEnable_Click(object sender, EventArgs e)
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();

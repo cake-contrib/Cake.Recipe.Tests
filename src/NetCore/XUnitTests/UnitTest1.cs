@@ -1,4 +1,3 @@
-using System;
 using MathLibrary;
 using Xunit;
 

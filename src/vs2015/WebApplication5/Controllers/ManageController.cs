@@ -334,6 +334,7 @@ namespace WebApplication5.Controllers
         }
 
         #region Helpers
+
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -384,6 +385,6 @@ namespace WebApplication5.Controllers
             Error
         }
 
-        #endregion
+        #endregion Helpers
     }
 }
