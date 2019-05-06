@@ -3,12 +3,13 @@
 string cakeReference = @"#load nuget:?package=Cake.Recipe&Error
 ";
 
-var buildScripts = new[] {
-    "./src/vs2015.cake"
-};
+var buildScripts = GetFiles("src/*.cake");
 
 foreach (var script in buildScripts) {
-    ReplaceRegexInFiles(script,
+    Task(script.GetFilenameWithoutExtension().ToString())
+        .IsDependeeOf("Default")
+        .Does(() => {
+    ReplaceRegexInFiles(script.FullPath,
         @"^\s*#l(oad)?.*Cake\.Recipe.*",
         cakeReference.Trim());
     
@@ -19,4 +20,10 @@ foreach (var script in buildScripts) {
                 { "verbosity", Context.Log.Verbosity.ToString("F") }
             }
         });
+    });
 }
+
+Task("Default");
+
+var target = Argument("target", EnvironmentVariable("TEST_TARGET", "Default"));
+RunTarget(target);
