@@ -1,0 +1,21 @@
+﻿@model int?
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@if (!Model.HasValue)
+{
+    <strong>What is 2 + 2? Press submit to know the anwer!</strong>
+    using (Html.BeginForm("", "", FormMethod.Get))
+    {
+        @Html.Hidden("n1", 2)
+        @Html.Hidden("n2", 2)
+
+        <input type="submit" value="Submit" />
+    }
+}
+else
+{
+    <strong>2 + 2 = @Model</strong>
+}
