@@ -1,6 +1,6 @@
 #addin nuget:?package=Cake.FileHelpers&version=3.2.0
 
-string cakeReference = @"#load nuget:?package=Cake.Recipe&Error
+string cakeReference = @"#load nuget:?package=Cake.Recipe&Version=1.0.0
 ";
 
 var buildScripts = GetFiles("src/*.cake");

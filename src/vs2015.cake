@@ -1,4 +1,4 @@
-#load nuget:?package=Cake.Recipe&Error=vs2015
+#load nuget:?package=Cake.Recipe&Version=1.0.0
 
 Environment.SetVariableNames();
 
