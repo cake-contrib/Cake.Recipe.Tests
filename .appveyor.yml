@@ -4,14 +4,14 @@ image:
 environment:
   TEST_TARGET: ContinuousIntegration
   matrix:
-    - CAKE_SCRIPT_NAME: NetCore
+    - CAKE_SCRIPT_NAME: vs2015
 
 for:
 -
   matrix:
     exclude:
       - image: Visual Studio 2015
-        CAKE_SCRIPT_NAME: vs2015
+        CAKE_SCRIPT_NAME: vs2017
 -
   matrix:
     only:
