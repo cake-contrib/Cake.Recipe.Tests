@@ -1,4 +1,4 @@
-#load nuget:?package=Cake.Recipe&Error
+#load nuget:https://ci.appveyor.com/nuget/cake-recipe?package=Cake.Recipe&version=2.0.0-alpha0252
 
 Environment.SetVariableNames();
 
@@ -11,8 +11,7 @@ BuildParameters.SetParameters(context: Context,
                               repositoryName: "Cake.Recipe.Tests",
                               appVeyorAccountName: "AdmiringWorm",
                               shouldRunDupFinder: false,
-                              shouldRunGitVersion: true,
-                              shouldRunInspectCode: !ReSharperTools.EndsWith("2018.3.4")); // This version is unable to parse our .NET Core project
+                              shouldRunGitVersion: true);
 
 BuildParameters.PrintParameters(Context);
 

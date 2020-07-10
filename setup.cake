@@ -1,7 +1,6 @@
 #addin nuget:?package=Cake.FileHelpers&version=3.2.0
 
-string cakeReference = @"#load nuget:?package=Cake.Recipe&Version=1.0.0
-";
+string cakeReference = @"#load nuget:https://ci.appveyor.com/nuget/cake-recipe?package=Cake.Recipe&version=2.0.0-alpha0252";
 
 IEnumerable<FilePath> buildScripts;
 
@@ -22,6 +21,16 @@ foreach (var script in buildScripts) {
         @"^\s*#l(oad)?.*Cake\.Recipe.*",
         cakeReference.Trim());
     
+    Information("Bootstrapping {0}", script);
+    // First we need to bootstrapt the cake script, before running it
+    CakeExecuteScript(script,
+        new CakeSettings {
+            Arguments = new Dictionary<string, string>{
+                { "bootstrap", ""}
+            }
+        });
+
+        
     Information("Testing {0}", script);
     CakeExecuteScript(script,
         new CakeSettings {

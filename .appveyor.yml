@@ -6,7 +6,7 @@ image:
   - Visual Studio 2017
   - Visual Studio 2019
 environment:
-  TEST_TARGET: AppVeyor
+  TEST_TARGET: ContinousIntegration
   matrix:
     - CAKE_SCRIPT_NAME: vs2015
     - CAKE_SCRIPT_NAME: vs2017
