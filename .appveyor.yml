@@ -2,7 +2,7 @@ version: 1.0.{build}
 image:
   - Visual Studio 2015
 environment:
-  TEST_TARGET: ContinousIntegration
+  TEST_TARGET: ContinuousIntegration
   matrix:
     - CAKE_SCRIPT_NAME: NetCore
 
