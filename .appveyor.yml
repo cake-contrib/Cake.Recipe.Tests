@@ -28,7 +28,7 @@ for:
 
 build_script:
   - pwsh: |
-      ./build.ps1 -target ContinuousIntegration
+      ./build.ps1 -target ContinuousIntegration -Verbosity Diagnostic
       if ($LASTEXITCODE -ne 0) {
         exit $LASTEXITCODE
       }
