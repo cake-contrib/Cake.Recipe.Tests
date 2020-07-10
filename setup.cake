@@ -1,6 +1,6 @@
 #addin nuget:?package=Cake.FileHelpers&version=3.3.0
 
-string cakeReference = @"#load nuget:https://ci.appveyor.com/nuget/cake-recipe?package=Cake.Recipe&version=2.0.0-alpha0252";
+string cakeReference = $@"#load nuget:https://ci.appveyor.com/nuget/cake-recipe?package=Cake.Recipe&version={EnvironmentVariable("PACKAGE_VERSION", "2.0.0-alpha0252")}";
 
 IEnumerable<FilePath> buildScripts;
 
@@ -13,6 +13,8 @@ else
     var buildScripts = GetFiles("src/*.cake");
 }
 DirectoryPath workingDir = "./src";
+
+var target = Argument("target", EnvironmentVariable("TEST_TARGET") ?? "Default");
 
 foreach (var script in buildScripts) {
     Task(script.GetFilenameWithoutExtension().ToString())
@@ -37,7 +39,8 @@ foreach (var script in buildScripts) {
     CakeExecuteScript(script,
         new CakeSettings {
             Arguments = new Dictionary<string, string>{
-                { "verbosity", Context.Log.Verbosity.ToString("F") }
+                { "verbosity", Context.Log.Verbosity.ToString("F") },
+                { "target", target },
             },
             WorkingDirectory = workingDir,
         });
@@ -46,8 +49,6 @@ foreach (var script in buildScripts) {
 
 Task("Default");
 
-var target = Argument("target", EnvironmentVariable("TEST_TARGET") ?? "Default");
-
-Information($"Running target: {target}");
+Information("Running target: {0}", target);
 
 RunTarget(target);

@@ -6,6 +6,7 @@ image:
   - Visual Studio 2017
   - Visual Studio 2019
 environment:
+  PACKAGE_VERSION: 2.0.0-alpha0254
   matrix:
     - CAKE_SCRIPT_NAME: vs2015
     - CAKE_SCRIPT_NAME: vs2017
@@ -26,4 +27,8 @@ for:
     - sudo apt-get install -y libgit2-dev
 
 build_script:
-  - pwsh: ./build.ps1 -target ContinousIntegration
+  - pwsh: |
+      ./build.ps1 -target ContinousIntegration
+      if ($LASTEXITCODE -ne 0) {
+        exit $LASTEXITCODE
+      }
