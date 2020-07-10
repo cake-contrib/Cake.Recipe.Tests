@@ -51,4 +51,4 @@ Task("Default");
 
 Information("Running target: {0}", target);
 
-RunTarget(target);
+RunTarget("Default");
