@@ -6,7 +6,7 @@ image:
   - Visual Studio 2017
   - Visual Studio 2019
 environment:
-  PACKAGE_VERSION: 2.0.0-alpha0254
+  PACKAGE_VERSION: 2.0.0-conditional-cont0001
   matrix:
     - CAKE_SCRIPT_NAME: vs2015
     - CAKE_SCRIPT_NAME: vs2017

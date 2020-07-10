@@ -13,11 +13,11 @@ dotnet: 3.1.301
 
 env:
   - CAKE_SCRIPT_NAME=vs2015
-    PACKAGE_VERSION="2.0.0-alpha0254"
+    PACKAGE_VERSION="2.0.0-conditional-cont0001"
   - CAKE_SCRIPT_NAME=vs2017
-    PACKAGE_VERSION="2.0.0-alpha0254"
+    PACKAGE_VERSION="2.0.0-conditional-cont0001"
   - CAKE_SCRIPT_NAME=NetCore
-    PACKAGE_VERSION="2.0.0-alpha0254"
+    PACKAGE_VERSION="2.0.0-conditional-cont0001"
 
 script:
   - ./build.sh --verbosity=diagnostic --target=ContinuousIntegration
