@@ -1,6 +1,6 @@
 #addin nuget:?package=Cake.FileHelpers&version=3.3.0
 
-string cakeReference = $@"#load nuget:https://ci.appveyor.com/nuget/cake-recipe?package=Cake.Recipe&version={EnvironmentVariable("PACKAGE_VERSION", "2.0.0-alpha0252")}";
+string cakeReference = $@"#load nuget:https://ci.appveyor.com/nuget/cake-recipe?package=Cake.Recipe&version={EnvironmentVariable("PACKAGE_VERSION", "2.0.0-alpha0252")}&prerelease";
 
 IEnumerable<FilePath> buildScripts;
 
@@ -41,6 +41,7 @@ foreach (var script in buildScripts) {
             Arguments = new Dictionary<string, string>{
                 { "verbosity", Context.Log.Verbosity.ToString("F") },
                 { "target", target },
+                { "ignore-cake-version", "" }
             },
             WorkingDirectory = workingDir,
         });
