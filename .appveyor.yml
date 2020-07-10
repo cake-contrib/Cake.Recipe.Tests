@@ -22,9 +22,9 @@ for:
   matrix:
     only:
       - image: Ubuntu
-    install:
-      - sudo apt-get update || echo "Update failed, ignoring..."
-      - sudo apt-get install -y libgit2-dev
+  install:
+    - sudo apt-get update || echo "Update failed, ignoring..."
+    - sudo apt-get install -y libgit2-dev
 
 build_script:
   - pwsh: ./build.ps1
