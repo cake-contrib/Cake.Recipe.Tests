@@ -28,7 +28,7 @@ for:
 
 build_script:
   - pwsh: |
-      ./build.ps1 -target ContinousIntegration
+      ./build.ps1 -target ContinuousIntegration
       if ($LASTEXITCODE -ne 0) {
         exit $LASTEXITCODE
       }
