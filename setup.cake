@@ -10,7 +10,7 @@ if (HasEnvironmentVariable("CAKE_SCRIPT_NAME"))
 }
 else
 {
-    var buildScripts = GetFiles("src/*.cake");
+    buildScripts = GetFiles("src/*.cake");
 }
 DirectoryPath workingDir = "./src";
 
