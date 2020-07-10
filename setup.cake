@@ -1,6 +1,6 @@
 #addin nuget:?package=Cake.FileHelpers&version=3.2.0
 
-string cakeReference = @"#load nuget:https://ci.appveyor.com/nuget/cake-recipe?package=Cake.Recipe&version=2.0.0-alpha0252";
+string cakeReference = @"#load nuget:https://ci.appveyor.com/nuget/cake-recipe?package=Cake.Recipe&version=2.0.0-alpha0254";
 
 IEnumerable<FilePath> buildScripts;
 
