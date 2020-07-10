@@ -21,6 +21,6 @@ for:
     - sudo apt-get install -y libgit2-dev
 
 build_script:
-  - pwsh: |
+  - ps: |
       ./build.ps1
       echo $LASTEXITCODE
