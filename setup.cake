@@ -12,6 +12,7 @@ else
 {
     var buildScripts = GetFiles("src/*.cake");
 }
+DirectoryPath workingDir = "./src";
 
 foreach (var script in buildScripts) {
     Task(script.GetFilenameWithoutExtension().ToString())
@@ -27,7 +28,8 @@ foreach (var script in buildScripts) {
         new CakeSettings {
             Arguments = new Dictionary<string, string>{
                 { "bootstrap", ""}
-            }
+            },
+            WorkingDirectory = workingDir,
         });
 
         
@@ -36,7 +38,8 @@ foreach (var script in buildScripts) {
         new CakeSettings {
             Arguments = new Dictionary<string, string>{
                 { "verbosity", Context.Log.Verbosity.ToString("F") }
-            }
+            },
+            WorkingDirectory = workingDir,
         });
     });
 }
