@@ -19,5 +19,8 @@ env:
   - CAKE_SCRIPT_NAME=NetCore
     PACKAGE_VERSION="2.0.0-pullrequest0554-0262"
 
+before_install:
+  - sudo apt-get install -qq dotnet-sdk-2.1
+
 script:
   - ./build.sh --verbosity=diagnostic --target=ContinuousIntegration
