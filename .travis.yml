@@ -13,11 +13,11 @@ dotnet: 3.1.301
 
 env:
   - CAKE_SCRIPT_NAME=vs2015
-    PACKAGE_VERSION="2.0.0-pullrequest0554-0262"
+    PACKAGE_VERSION="2.0.0-pullrequest0545-0265"
   - CAKE_SCRIPT_NAME=vs2017
-    PACKAGE_VERSION="2.0.0-pullrequest0554-0262"
+    PACKAGE_VERSION="2.0.0-pullrequest0545-0265"
   - CAKE_SCRIPT_NAME=NetCore
-    PACKAGE_VERSION="2.0.0-pullrequest0554-0262"
+    PACKAGE_VERSION="2.0.0-pullrequest0545-0265"
 
 before_install:
   - sudo apt-get install -qq dotnet-sdk-2.1
