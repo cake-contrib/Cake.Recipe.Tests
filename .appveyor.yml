@@ -1,0 +1,30 @@
+version: 1.0.{build}
+image:
+  - macOS
+  - Ubuntu
+  - Visual Studio 2015
+  - Visual Studio 2017
+  - Visual Studio 2019
+environment:
+  TEST_TARGET: AppVeyor
+  matrix:
+    - CAKE_SCRIPT_NAME: vs2015
+    - CAKE_SCRIPT_NAME: vs2017
+    - CAKE_SCRIPT_NAME: NetCore
+
+for:
+-
+  matrix:
+    exclude:
+      - image: Visual Studio 2015
+        CAKE_SCRIPT_NAME: vs2015
+-
+  matrix:
+    only:
+      - image: Ubuntu
+    install:
+      - sudo apt-get update || echo "Update failed, ignoring..."
+      - sudo apt-get install -y libgit2-dev
+
+build_script:
+  - pwsh: ./build.ps1
