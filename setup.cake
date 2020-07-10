@@ -3,7 +3,16 @@
 string cakeReference = @"#load nuget:?package=Cake.Recipe&Version=1.0.0
 ";
 
-var buildScripts = GetFiles("src/*.cake");
+IEnumerable<FilePath> buildScripts;
+
+if (HasEnvironmentVariable("CAKE_SCRIPT_NAME"))
+{
+    buildScripts = new FilePath[] { "./src/" + EnvironmentVariable("CAKE_SCRIPT_NAME") + ".cake" };
+}
+else
+{
+    var buildScripts = GetFiles("src/*.cake");
+}
 
 foreach (var script in buildScripts) {
     Task(script.GetFilenameWithoutExtension().ToString())
