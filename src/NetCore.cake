@@ -12,7 +12,7 @@ BuildParameters.SetParameters(context: Context,
                               appVeyorAccountName: "AdmiringWorm",
                               shouldRunDupFinder: false,
                               shouldRunGitVersion: true,
-                              shouldUseDeterministicBuilds: false,
+                              shouldUseDeterministicBuilds: true,
                               shouldRunCodecov: true);
 
 BuildParameters.PrintParameters(Context);

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.msbuild" Version="2.9.0" Condition="'$(OS)'!='Windows_NT'">
+    <PackageReference Include="coverlet.msbuild" Version="2.9.1-preview.13.g7c12e15963">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

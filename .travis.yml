@@ -9,84 +9,84 @@ jobs:
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=vs2015
-          PACKAGE_VERSION=2.0.0-alpha0272
+          PACKAGE_VERSION=2.0.0-alpha0276
           pkgConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
     - os: linux
       mono: 6.6.0
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=vs2017
-          PACKAGE_VERSION=2.0.0-alpha0272
+          PACKAGE_VERSION=2.0.0-alpha0276
           pkgConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
     - os: linux
       mono: 6.6.0
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=NetCore
-          PACKAGE_VERSION=2.0.0-alpha0272
+          PACKAGE_VERSION=2.0.0-alpha0276
           pkgConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
     - os: linux
       mono: latest
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=vs2015
-          PACKAGE_VERSION=2.0.0-alpha0272
+          PACKAGE_VERSION=2.0.0-alpha0276
           pkgConfigUrl=https://raw.githubusercontent.com/cake-build/resources/develop/packages.config
     - os: linux
       mono: latest
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=vs2017
-          PACKAGE_VERSION=2.0.0-alpha0272
+          PACKAGE_VERSION=2.0.0-alpha0276
           pkgConfigUrl=https://raw.githubusercontent.com/cake-build/resources/develop/packages.config
     - os: linux
       mono: latest
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=NetCore
-          PACKAGE_VERSION=2.0.0-alpha0272
+          PACKAGE_VERSION=2.0.0-alpha0276
           pkgConfigUrl=https://raw.githubusercontent.com/cake-build/resources/develop/packages.config
     - os: osx
       mono: 6.6.0
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=vs2015
-          PACKAGE_VERSION=2.0.0-alpha0272
+          PACKAGE_VERSION=2.0.0-alpha0276
           pkgConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
     - os: osx
       mono: 6.6.0
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=vs2017
-          PACKAGE_VERSION=2.0.0-alpha0272
+          PACKAGE_VERSION=2.0.0-alpha0276
           pkgConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
     - os: osx
       mono: 6.6.0
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=NetCore
-          PACKAGE_VERSION=2.0.0-alpha0272
+          PACKAGE_VERSION=2.0.0-alpha0276
           pkgConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
     - os: osx
       mono: latest
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=vs2015
-          PACKAGE_VERSION=2.0.0-alpha0272
+          PACKAGE_VERSION=2.0.0-alpha0276
           pkgConfigUrl=https://raw.githubusercontent.com/cake-build/resources/develop/packages.config
     - os: osx
       mono: latest
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=vs2017
-          PACKAGE_VERSION=2.0.0-alpha0272
+          PACKAGE_VERSION=2.0.0-alpha0276
           pkgConfigUrl=https://raw.githubusercontent.com/cake-build/resources/develop/packages.config
     - os: osx
       mono: latest
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=NetCore
-          PACKAGE_VERSION=2.0.0-alpha0272
+          PACKAGE_VERSION=2.0.0-alpha0276
           pkgConfigUrl=https://raw.githubusercontent.com/cake-build/resources/develop/packages.config
 
 before_install:
