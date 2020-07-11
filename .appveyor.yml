@@ -18,6 +18,8 @@ for:
     exclude:
       - image: Visual Studio 2015
         CAKE_SCRIPT_NAME: vs2017
+      - image: Visual Studio 2019
+        CAKE_SCRIPT_NAME: vs2015 # Not compatible with VS 2019 it seems
 -
   matrix:
     only:
