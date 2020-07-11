@@ -28,6 +28,7 @@ for:
 
 build_script:
   - pwsh: |
+      Invoke-WebRequest -Uri "https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config" -OutFile .\tools\packages.config -UseBasicParsing
       ./build.ps1 -target CI -Verbosity Diagnostic
       if ($LASTEXITCODE -ne 0) {
         exit $LASTEXITCODE
