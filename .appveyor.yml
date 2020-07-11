@@ -8,9 +8,9 @@ image:
 environment:
   PACKAGE_VERSION: 2.0.0-alpha0276
   matrix:
+    - CAKE_SCRIPT_NAME: NetCore
     - CAKE_SCRIPT_NAME: vs2015
     - CAKE_SCRIPT_NAME: vs2017
-    - CAKE_SCRIPT_NAME: NetCore
 
 for:
 -
