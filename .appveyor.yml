@@ -6,7 +6,7 @@ image:
   - Visual Studio 2017
   - Visual Studio 2019
 environment:
-  PACKAGE_VERSION: 2.0.0-pullrequest0545-0265
+  PACKAGE_VERSION: 2.0.0-alpha0272
   matrix:
     - CAKE_SCRIPT_NAME: vs2015
     - CAKE_SCRIPT_NAME: vs2017
@@ -28,7 +28,7 @@ for:
 
 build_script:
   - pwsh: |
-      ./build.ps1 -target ContinuousIntegration -Verbosity Diagnostic
+      ./build.ps1 -target CI -Verbosity Diagnostic
       if ($LASTEXITCODE -ne 0) {
         exit $LASTEXITCODE
       }
