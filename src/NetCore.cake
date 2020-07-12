@@ -2,10 +2,12 @@
 
 Environment.SetVariableNames();
 
+var solution = EnvironmentVariable("APPVEYOR_BUILD_WORKER_IMAGE") == "Visual Studio 2015" ? "./NetCore_vs2015.sln" : "./NetCore.sln";
+
 BuildParameters.SetParameters(context: Context,
                               buildSystem: BuildSystem,
                               sourceDirectoryPath: "./NetCore",
-                              solutionFilePath: "./NetCore.sln",
+                              solutionFilePath: solution,
                               title: ".NET Core Tests",
                               repositoryOwner: "AdmiringWorm",
                               repositoryName: "Cake.Recipe.Tests",
