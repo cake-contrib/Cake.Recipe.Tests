@@ -41,6 +41,7 @@ build_script:
       if ($LASTEXITCODE -ne 0) {
         exit $LASTEXITCODE
       }
+test: off
 
 artifacts:
   - path: '**/*.opencover.xml'
