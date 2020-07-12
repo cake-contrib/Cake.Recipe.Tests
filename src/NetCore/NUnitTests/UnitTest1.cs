@@ -8,7 +8,7 @@ namespace Tests
         [Test]
         public void NUnit_Sum()
         {
-            Assert.That(MathClass.Add(2, 2), Is.EqualTo(4));
+            Assert.That(MathClass.Multiply(4, 2), Is.EqualTo(8));
         }
     }
 }

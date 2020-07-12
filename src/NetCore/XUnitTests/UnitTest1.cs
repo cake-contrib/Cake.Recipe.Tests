@@ -8,7 +8,7 @@ namespace XUnitTests
         [Fact]
         public void XUnit_Sum()
         {
-            Assert.Equal(4, MathClass.Add(2, 2));
+            Assert.Equal(0, MathClass.Subtract(2, 2));
         }
     }
 }
