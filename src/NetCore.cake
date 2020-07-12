@@ -2,7 +2,7 @@
 
 Environment.SetVariableNames();
 
-var solution = EnvironmentVariable("APPVEYOR_BUILD_WORKER_IMAGE") == "Visual Studio 2015" ? "./NetCore_vs2015.sln" : "./NetCore.sln";
+var solution = EnvironmentVariable("APPVEYOR_BUILD_WORKER_IMAGE") == "Visual Studio 2015" || IsRunningOnUnix() ? "./NetCore_min.sln" : "./NetCore.sln";
 
 BuildParameters.SetParameters(context: Context,
                               buildSystem: BuildSystem,
