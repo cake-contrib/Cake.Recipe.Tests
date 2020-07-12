@@ -1,6 +1,8 @@
 #addin nuget:?package=Cake.FileHelpers&version=3.3.0
 
-string cakeReference = $@"#load nuget:https://ci.appveyor.com/nuget/cake-recipe?package=Cake.Recipe&version={EnvironmentVariable("PACKAGE_VERSION", "2.0.0-alpha0252")}&prerelease";
+var packageVersion = FileReadLines("./package_version.config").First();
+
+string cakeReference = $@"#load nuget:https://ci.appveyor.com/nuget/cake-recipe?package=Cake.Recipe&version={packageVersion}&prerelease";
 
 IEnumerable<FilePath> buildScripts;
 
