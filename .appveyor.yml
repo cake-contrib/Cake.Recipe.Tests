@@ -26,6 +26,13 @@ for:
       - image: Visual Studio 2019
   environment:
     CAKE_PKG_CONFIG: https://raw.githubusercontent.com/cake-build/resources/42a3b26b93f44ee18dad8aaf85db63a6dea7abe4/packages.config
+- matrix:
+    only:
+      - image: Visual Studio 2015
+        CAKE_SCRIPT_NAME: NetCore
+  environment:
+    FEEDZ_API_KEY:
+      secure: txn+oD4p2fPGINTr3SOKUj25dinDSoHeVCrt0TGGJi0luHkeUdTwGtXZbsqP7x32
 -
   matrix:
     only:
