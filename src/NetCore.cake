@@ -23,6 +23,6 @@ BuildParameters.SetParameters(context: Context,
 BuildParameters.PrintParameters(Context);
 
 ToolSettings.SetToolSettings(context: Context,
-                             testCoverageFilter: "+[*]*");
+                             testCoverageFilter: "+[*]* -[nunit.framework*]* -[NUnit3.TestAdapter*]*");
 
 Build.RunDotNetCore();
