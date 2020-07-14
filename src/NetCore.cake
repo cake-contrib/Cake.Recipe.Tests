@@ -25,4 +25,27 @@ BuildParameters.PrintParameters(Context);
 ToolSettings.SetToolSettings(context: Context,
                              testCoverageFilter: "+[*]* -[nunit.framework*]* -[NUnit3.TestAdapter*]*");
 
+
+Task("Update-Dependencies")
+    .Does(() =>
+{
+    var dotnetTool = Context.Tools.Resolve("dotnet.exe");
+    if (dotnetTool == null) {
+        dotnetTool = Context.Tools.Resolve("dotnet");
+    }
+    foreach (var project in ParseSolution(BuildParameters.SolutionFilePath).GetProjects()) {
+        var parsedProject = ParseProject(project.Path, BuildParameters.Configuration);
+        foreach (var package in parsedProject.PackageReferences.Select(x => x.Name)) {
+            StartProcess(dotnetTool, new ProcessSettings()
+                .WithArguments(builder =>
+                    builder.Append("add")
+                           .AppendQuoted(project.Path.FullPath)
+                           .Append("package")
+                           .AppendQuoted(package)));
+        }
+    }
+}
+);
+
+
 Build.RunDotNetCore();
