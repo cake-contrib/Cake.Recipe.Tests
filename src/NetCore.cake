@@ -1,4 +1,4 @@
-#load nuget:https://ci.appveyor.com/nuget/cake-recipe?package=Cake.Recipe&version=2.0.0-alpha0276&prerelease
+#load nuget:https://ci.appveyor.com/nuget/cake-recipe?package=Cake.Recipe&version=2.0.0-alpha0282&prerelease
 
 Environment.SetVariableNames();
 
@@ -13,8 +13,12 @@ BuildParameters.SetParameters(context: Context,
                               shouldRunDupFinder: false,
                               shouldRunGitVersion: true,
                               shouldUseDeterministicBuilds: true,
+                              shouldRunDotNetCorePack: true,
                               shouldRunCodecov: true,
-                              nugetConfig: "./NetCore/nuget.config");
+                              nugetConfig: "./NetCore/nuget.config",
+                              packageSourceDatas: new List<PackageSourceData> {
+                                  new PackageSourceData(Context, "feedz", "https://f.feedz.io/wormiecorp/packages/nuget/index.json", FeedType.NuGet, false)
+                              });
 
 BuildParameters.PrintParameters(Context);
 
