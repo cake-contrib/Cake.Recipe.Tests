@@ -49,6 +49,3 @@ build_script:
         exit $LASTEXITCODE
       }
 test: off
-
-artifacts:
-  - path: '**/*.opencover.xml'
