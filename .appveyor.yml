@@ -1,4 +1,7 @@
 version: 1.0.{build}
+branches:
+    except:
+    - master # We don't want to accidently publish a release to NuGet
 image:
   #- macOS
   #- Ubuntu
