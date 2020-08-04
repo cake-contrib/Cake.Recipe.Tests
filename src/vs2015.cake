@@ -11,7 +11,6 @@ BuildParameters.SetParameters(context: Context,
                               repositoryName: "Cake.Recipe.Tests",
                               appVeyorAccountName: "AdmiringWorm",
                               shouldRunDupFinder: false,
-                              shouldRunGitVersion: true,
                               shouldUseDeterministicBuilds: false,
                               shouldRunCodecov: true);
 
