@@ -42,7 +42,12 @@ for:
 build_script:
   - pwsh: |
       Invoke-WebRequest -Uri "$env:CAKE_PKG_CONFIG" -OutFile .\tools\packages.config -UseBasicParsing
-      ./build.ps1 -target CI -Verbosity Diagnostic
+      if ($env:CAKE_SCRIPT_NAME -eq "Netcore") {
+        ./build_netcore.ps1 --target=CI --verbosity=Diagnostic
+      }
+      else {
+        ./build.ps1 -target CI -Verbosity Diagnostic
+      }
       if ($LASTEXITCODE -ne 0) {
         exit $LASTEXITCODE
       }

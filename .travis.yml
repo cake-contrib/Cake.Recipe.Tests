@@ -86,4 +86,4 @@ before_install:
   - curl -L $pkgConfigUrl -o tools/packages.config
 
 script:
-  - ./build.sh --verbosity=diagnostic --target=CI
+  - if [ "$CAKE_SCRIPT_NAME" = "NetCore" ]; then ./build_netcore.sh --verbosity=Diagnostic --target=CI; else ./build.sh --verbosity=diagnostic --target=CI; fi
