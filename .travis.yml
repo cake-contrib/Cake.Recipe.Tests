@@ -74,4 +74,6 @@ before_install:
   - curl -L $pkgConfigUrl -o tools/packages.config
 
 script:
-  - if [ "$CAKE_SCRIPT_NAME" = "NetCore" ]; then dotnet tool restore && dotnet cake setup.cake --verbosity=Diagnostic --target=CI; else ./build.sh --verbosity=diagnostic --target=CI; fi
+  # Net Core Cake currently disabled until issue and have figured out: https://travis-ci.org/github/cake-contrib/Cake.Recipe.Tests/jobs/714883390#L2596
+  #- if [ "$CAKE_SCRIPT_NAME" = "NetCore" ]; then dotnet tool restore && dotnet cake setup.cake --verbosity=Diagnostic --target=CI; else ./build.sh --verbosity=diagnostic --target=CI; fi
+  - ./build.sh --verbosity=Diagnostic --target=CI

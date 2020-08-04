@@ -5,8 +5,8 @@ branches:
 image:
   #- macOS
   #- Ubuntu
-  #- Visual Studio 2015
-  #- Visual Studio 2017
+  - Visual Studio 2015
+  - Visual Studio 2017
   - Visual Studio 2019
 environment:
   CAKE_PKG_CONFIG: https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
@@ -46,7 +46,9 @@ build_script:
   - dotnet --info
   - pwsh: |
       Invoke-WebRequest -Uri "$env:CAKE_PKG_CONFIG" -OutFile .\tools\packages.config -UseBasicParsing
-      if ($env:CAKE_SCRIPT_NAME -eq "Netcore") {
+      if ($env:CAKE_SCRIPT_NAME -eq "Netcore" -and $env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2019") {
+        # This is a current workaround until the following issue is resolved
+        # https://github.com/cake-contrib/Cake.Issues.Reporting.Generic/issues/312
         dotnet tool restore
         dotnet cake setup.cake --target=CI --verbosity=Diagnostic
       }
