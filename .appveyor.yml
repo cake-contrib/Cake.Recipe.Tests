@@ -2,8 +2,8 @@ version: 1.0.{build}
 image:
   #- macOS
   #- Ubuntu
-  - Visual Studio 2015
-  - Visual Studio 2017
+  #- Visual Studio 2015
+  #- Visual Studio 2017
   - Visual Studio 2019
 environment:
   CAKE_PKG_CONFIG: https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
@@ -40,10 +40,12 @@ for:
     - sudo apt-get install -y libgit2-dev
 
 build_script:
+  - dotnet --info
   - pwsh: |
       Invoke-WebRequest -Uri "$env:CAKE_PKG_CONFIG" -OutFile .\tools\packages.config -UseBasicParsing
       if ($env:CAKE_SCRIPT_NAME -eq "Netcore") {
-        ./build_netcore.ps1 --target=CI --verbosity=Diagnostic
+        dotnet tool restore
+        dotnet cake setup.cake --target=CI --verbosity=Diagnostic
       }
       else {
         ./build.ps1 -target CI -Verbosity Diagnostic
