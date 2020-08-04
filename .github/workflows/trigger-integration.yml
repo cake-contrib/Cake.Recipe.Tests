@@ -1,0 +1,27 @@
+name: Trigger Integration Tests
+
+on:
+    workflow_dispatch:
+        inputs:
+            recipe_version:
+                description: The built Cake.Recipe nuget package version to run integration tests on (tests will only trigger if version is different)
+                required: true
+
+jobs:
+    update:
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v2.3.1
+            - name: Update cake version
+              run: echo "${{ github.event.inputs.recipe_version }}" > "${{ github.workspace }}/package_version.config"
+            - name: Commit changes
+              uses: EndBug/add-and-commit@v4.2.0
+              with:
+                  add: package_version.config
+                  message: "Change package version to v${{ github.event.inputs.recipe_version }}"
+                  author_name: "${{ github.actor }}"
+                  author_email: "${{ github.actor }}@users.noreply.github.com"
