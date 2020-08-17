@@ -10,27 +10,25 @@ jobs:
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=NetCore
-          pkgConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
+          toolConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/.config/dotnet-tools.json
     - os: linux
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=NetCore
-          pkgConfigUrl=https://raw.githubusercontent.com/cake-build/resources/develop/packages.config
     - os: osx
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=NetCore
-          pkgConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
+          toolConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/.config/dotnet-tools.json
     - os: osx
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=NetCore
-          pkgConfigUrl=https://raw.githubusercontent.com/cake-build/resources/develop/packages.config
     - os: linux
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=vs2015
-          pkgConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
+          toolConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/.config/dotnet-tools.json
     - os: linux
       dotnet: 3.1.301
       env:
@@ -40,7 +38,7 @@ jobs:
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=vs2015
-          pkgConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
+          toolConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/.config/dotnet-tools.json
     - os: osx
       dotnet: 3.1.301
       env:
@@ -50,7 +48,7 @@ jobs:
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=vs2017
-          pkgConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
+          toolConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/.config/dotnet-tools.json
     - os: linux
       dotnet: 3.1.301
       env:
@@ -60,7 +58,7 @@ jobs:
       dotnet: 3.1.301
       env:
         - CAKE_SCRIPT_NAME=vs2017
-          pkgConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
+          toolConfigUrl=https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/.config/dotnet-tools.json
     - os: osx
       dotnet: 3.1.301
       env:
@@ -71,9 +69,9 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install -qq dotnet-sdk-2.1 ; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew tap isen-ng/dotnet-sdk-versions ; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew cask install dotnet-sdk-2.1.800 ; fi
-  - curl -L $pkgConfigUrl -o tools/packages.config
+  - if [ ! -z "$pkgConfigUrl" ]; then curl -L $pkgConfigUrl -o tools/packages.config ; fi
+  - if [ ! -z "$toolConfigUrl" ]; then if [ ! -d ".config" ]; then mkdir .config ; fi ; curl -L $toolConfigUrl -o .config/dotnet-tools.json ; fi
 
 script:
-  # Net Core Cake currently disabled until issue and have figured out: https://travis-ci.org/github/cake-contrib/Cake.Recipe.Tests/jobs/714883390#L2596
-  #- if [ "$CAKE_SCRIPT_NAME" = "NetCore" ]; then dotnet tool restore && dotnet cake setup.cake --verbosity=Diagnostic --target=CI; else ./build.sh --verbosity=diagnostic --target=CI; fi
-  - ./build.sh --verbosity=Diagnostic --target=CI
+  - if [ "$CAKE_SCRIPT_NAME" = "NetCore" ]; then ./build.sh --verbosity=Diagnostic --target=CI --usenetcore ; fi
+  - if [ "$CAKE_SCRIPT_NAME" != "NetCore"]; then ./build.sh --verbosity=Diagnostic --target=CI ; fi

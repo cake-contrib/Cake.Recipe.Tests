@@ -9,7 +9,8 @@ image:
   - Visual Studio 2017
   - Visual Studio 2019
 environment:
-  CAKE_PKG_CONFIG: https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/tools/packages.config
+  CAKE_PKG_CONFIG: https://raw.githubusercontent.com/cake-build/resources/develop/packages.config
+  CAKE_TOOL_CONFIG: https://raw.githubusercontent.com/cake-contrib/Cake.Recipe/develop/.config/dotnet-tools.json
   matrix:
     - CAKE_SCRIPT_NAME: NetCore
     - CAKE_SCRIPT_NAME: vs2015
@@ -45,12 +46,14 @@ for:
 build_script:
   - dotnet --info
   - pwsh: |
+      if (!(Test-Path .config)) {
+          mkdir .config
+      }
+  - pwsh: |
+      Invoke-WebRequest -Uri "$env:CAKE_TOOL_CONFIG" -OutFile .\.config\dotnet-tools.json -UseBasicParsing
       Invoke-WebRequest -Uri "$env:CAKE_PKG_CONFIG" -OutFile .\tools\packages.config -UseBasicParsing
-      if ($env:CAKE_SCRIPT_NAME -eq "Netcore" -and $env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2019") {
-        # This is a current workaround until the following issue is resolved
-        # https://github.com/cake-contrib/Cake.Issues.Reporting.Generic/issues/312
-        dotnet tool restore
-        dotnet cake setup.cake --target=CI --verbosity=Diagnostic
+      if ($env:CAKE_SCRIPT_NAME -eq "Netcore") {
+        ./build.ps1 -target CI -Verbosity Diagnostic -UseNetCore
       }
       else {
         ./build.ps1 -target CI -Verbosity Diagnostic
