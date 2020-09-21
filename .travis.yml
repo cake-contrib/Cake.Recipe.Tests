@@ -74,4 +74,4 @@ before_install:
 
 script:
   - if [ "$CAKE_SCRIPT_NAME" = "NetCore" ]; then ./build.sh --verbosity=Diagnostic --target=CI --usenetcore ; fi
-  - if [ "$CAKE_SCRIPT_NAME" != "NetCore"]; then ./build.sh --verbosity=Diagnostic --target=CI ; fi
+  - if [ "$CAKE_SCRIPT_NAME" != "NetCore" ]; then ./build.sh --verbosity=Diagnostic --target=CI ; fi
