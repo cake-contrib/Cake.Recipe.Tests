@@ -68,7 +68,7 @@ jobs:
 before_install:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install -qq dotnet-sdk-2.1 ; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew tap isen-ng/dotnet-sdk-versions ; fi
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew cask install dotnet-sdk-2.1.800 ; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew cask install dotnet-sdk2-1-800 ; fi
   - if [ ! -z "$pkgConfigUrl" ]; then curl -L $pkgConfigUrl -o tools/packages.config ; fi
   - if [ ! -z "$toolConfigUrl" ]; then if [ ! -d ".config" ]; then mkdir .config ; fi ; curl -L $toolConfigUrl -o .config/dotnet-tools.json ; fi
 
