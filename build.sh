@@ -53,7 +53,7 @@ for i in "$@"; do
     shift
 done
 
-if [ "$USE_NET_CORE" == 1 ]; then
+if [ "$USE_NET_CORE" == "1" ]; then
     MONO_EXEC="$(which dotnet 2>/dev/null || echo "dotnet")"
     if [ ! -f "$SCRIPT_DIR/.config/dotnet-tools.json" ]; then
         . $MONO_EXEC new tool-manifest
