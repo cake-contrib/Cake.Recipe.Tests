@@ -13,12 +13,12 @@ ADDINS_DIR=$TOOLS_DIR/Addins
 MODULES_DIR=$TOOLS_DIR/Modules
 NUGET_EXE=$TOOLS_DIR/nuget.exe
 CAKE_EXE=$TOOLS_DIR/Cake/Cake.exe
+MONO_EXE=mono
 PACKAGES_CONFIG=$TOOLS_DIR/packages.config
 PACKAGES_CONFIG_MD5=$TOOLS_DIR/packages.config.md5sum
 ADDINS_PACKAGES_CONFIG=$ADDINS_DIR/packages.config
 MODULES_PACKAGES_CONFIG=$MODULES_DIR/packages.config
-MONO_EXEC="$(which mono 2>/dev/null || echo "mono")"
-USE_NET_CORE=0
+USE_NETCORE=0
 
 # Define md5sum or md5 depending on Linux/OSX
 MD5_EXE=
@@ -34,13 +34,14 @@ CAKE_ARGUMENTS=()
 
 # Parse arguments.
 for i in "$@"; do
-    case "$(echo $1 | tr '{upper}' '{lower'})" in
+    case $(echo "$1" | tr '[:upper:]' '[:lower:]') in
     -s | --script)
         SCRIPT="$2"
         shift
         ;;
     --usenetcore)
-        USE_NET_CORE=1
+        echo "Enabling .NET Core build"
+        USE_NETCORE=1
         shift
         ;;
     --)
@@ -48,19 +49,22 @@ for i in "$@"; do
         CAKE_ARGUMENTS+=("$@")
         break
         ;;
-    *) CAKE_ARGUMENTS+=("$1") ;;
+    *)
+        CAKE_ARGUMENTS+=("$1")
+        echo "Using argument $1"
+        ;;
     esac
     shift
 done
 
-if [ "$USE_NET_CORE" == "1" ]; then
-    MONO_EXEC="$(which dotnet 2>/dev/null || echo "dotnet")"
+if [ "$USE_NETCORE" -eq "1" ]; then
     if [ ! -f "$SCRIPT_DIR/.config/dotnet-tools.json" ]; then
-        . $MONO_EXEC new tool-manifest
-        . $MONO_EXEC tool install Cake.Tool
+        dotnet new tool-manifest
+        dotnet tool install CAKE.Tool
     fi
-    . $MONO_EXEC tool restore
-    CAKE_EXE="cake"
+    dotnet tool restore
+    MONO_EXE=dotnet
+    CAKE_EXE=cake
 else
     # Make sure the tools folder exist.
     if [ ! -d "$TOOLS_DIR" ]; then
@@ -93,7 +97,7 @@ else
         find . -type d ! -name . ! -name 'Cake.Bakery' | xargs rm -rf
     fi
 
-    . $MONO_EXEC "$NUGET_EXE" install -ExcludeVersion
+    $MONO_EXE "$NUGET_EXE" install -ExcludeVersion
     if [ $? -ne 0 ]; then
         echo "Could not restore NuGet tools."
         exit 1
@@ -107,7 +111,7 @@ else
     if [ -f "$ADDINS_PACKAGES_CONFIG" ]; then
         pushd "$ADDINS_DIR" >/dev/null
 
-        . $MONO_EXEC "$NUGET_EXE" install -ExcludeVersion
+        $MONO_EXE "$NUGET_EXE" install -ExcludeVersion
         if [ $? -ne 0 ]; then
             echo "Could not restore NuGet addins."
             exit 1
@@ -120,7 +124,7 @@ else
     if [ -f "$MODULES_PACKAGES_CONFIG" ]; then
         pushd "$MODULES_DIR" >/dev/null
 
-        . $MONO_EXEC "$NUGET_EXE" install -ExcludeVersion
+        $MONO_EXE "$NUGET_EXE" install -ExcludeVersion
         if [ $? -ne 0 ]; then
             echo "Could not restore NuGet modules."
             exit 1
@@ -136,11 +140,5 @@ else
     fi
 fi
 
-. $MONO_EXEC "$CAKE_EXE" $SCRIPT --bootstrap
-if [ $? -ne 0 ]; then
-    echo "Unable to bootstrap the cake scripts"
-    exit 1
-fi
-
 # Start Cake
-exec $MONO_EXEC "$CAKE_EXE" $SCRIPT "${CAKE_ARGUMENTS[@]}"
+exec $MONO_EXE "$CAKE_EXE" $SCRIPT "${CAKE_ARGUMENTS[@]}"
