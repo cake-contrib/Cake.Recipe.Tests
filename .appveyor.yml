@@ -52,7 +52,7 @@ build_script:
   - pwsh: |
       Invoke-WebRequest -Uri "$env:CAKE_TOOL_CONFIG" -OutFile .\.config\dotnet-tools.json -UseBasicParsing
       Invoke-WebRequest -Uri "$env:CAKE_PKG_CONFIG" -OutFile .\tools\packages.config -UseBasicParsing
-      if ($env:CAKE_SCRIPT_NAME -eq "Netcore") {
+      if ($env:APPVEYOR_BUILD_WORKER_IMAGE-eq "Visual Studio 2019") {
         ./build.ps1 -target CI -Verbosity Diagnostic -UseNetCore
       }
       else {
