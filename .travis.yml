@@ -73,5 +73,5 @@ before_install:
   - if [ ! -z "$toolConfigUrl" ]; then if [ ! -d ".config" ]; then mkdir .config ; fi ; curl -L $toolConfigUrl -o .config/dotnet-tools.json ; fi
 
 script:
-  - if [ "$CAKE_SCRIPT_NAME" = "NetCore" ]; then ./build.sh --verbosity=Diagnostic --target=CI --usenetcore ; fi
-  - if [ "$CAKE_SCRIPT_NAME" != "NetCore" ]; then ./build.sh --verbosity=Diagnostic --target=CI ; fi
+  - if [ ! -z "$toolConfigUrl" ]; then ./build.sh --verbosity=Diagnostic --target=CI --usenetcore ; fi
+  - if [ -z "$toolConfigUrl" ]; then ./build.sh --verbosity=Diagnostic --target=CI ; fi
